@@ -6,6 +6,12 @@ from django.utils import timezone
 
 User = settings.AUTH_USER_MODEL
 
+class TempUser(models.Model):
+    first_name = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = "temp_user"
 
 class BlogPostQuerySet(models.QuerySet):
     def published(self):
